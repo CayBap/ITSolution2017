@@ -10,12 +10,12 @@ namespace AirLineManager.BUS
     public class UserBUS
     {
         AirLineEntities context = new AirLineEntities();
-        public User getUser(string Email, string Passowrd)
+        public User getUser(string Email)
         {
             User user = null;
             try
             {
-                user = context.Users.Where(u => u.Email == Email && u.Password == Passowrd).SingleOrDefault();
+                user = context.Users.Where(u => u.Email == Email ).SingleOrDefault();
             }
             catch (Exception ex)
             {

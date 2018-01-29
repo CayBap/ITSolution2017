@@ -30,5 +30,11 @@ namespace AirLineManager
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Aircraft> Aircrafts { get; set; }
+        public virtual DbSet<Airport> Airports { get; set; }
+        public virtual DbSet<Route> Routes { get; set; }
+        public virtual DbSet<Schedule> Schedules { get; set; }
+        public virtual DbSet<VD4> VD4 { get; set; }
+        public virtual DbSet<VD3> VD3 { get; set; }
     }
 }

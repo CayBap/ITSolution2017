@@ -56,5 +56,80 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Aircrafts">
+      <EntityTypeMapping TypeName="AirLineModel.Aircraft">
+        <MappingFragment StoreEntitySet="Aircrafts">
+          <ScalarProperty Name="BusinessSeats" ColumnName="BusinessSeats" />
+          <ScalarProperty Name="EconomySeats" ColumnName="EconomySeats" />
+          <ScalarProperty Name="TotalSeats" ColumnName="TotalSeats" />
+          <ScalarProperty Name="MakeModel" ColumnName="MakeModel" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Airports">
+      <EntityTypeMapping TypeName="AirLineModel.Airport">
+        <MappingFragment StoreEntitySet="Airports">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IATACode" ColumnName="IATACode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="AirLineModel.Route">
+        <MappingFragment StoreEntitySet="Routes">
+          <ScalarProperty Name="FlightTime" ColumnName="FlightTime" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="ArrivalAirportID" ColumnName="ArrivalAirportID" />
+          <ScalarProperty Name="DepartureAirportID" ColumnName="DepartureAirportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="AirLineModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedules">
+          <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+          <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+          <ScalarProperty Name="EconomyPrice" ColumnName="EconomyPrice" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="AircraftID" ColumnName="AircraftID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VD4">
+      <EntityTypeMapping TypeName="AirLineModel.VD4">
+        <MappingFragment StoreEntitySet="VD4">
+          <ScalarProperty Name="ArrivalAirportID" ColumnName="ArrivalAirportID" />
+          <ScalarProperty Name="DepartureAirportID" ColumnName="DepartureAirportID" />
+          <ScalarProperty Name="EconomyPrice" ColumnName="EconomyPrice" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="From" ColumnName="From" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VD3">
+      <EntityTypeMapping TypeName="AirLineModel.VD3">
+        <MappingFragment StoreEntitySet="VD3">
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+          <ScalarProperty Name="ArrivalAirportID" ColumnName="ArrivalAirportID" />
+          <ScalarProperty Name="DepartureAirportID" ColumnName="DepartureAirportID" />
+          <ScalarProperty Name="EconomyPrice" ColumnName="EconomyPrice" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="AircraftID" ColumnName="AircraftID" />
+          <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+          <ScalarProperty Name="To" ColumnName="To" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

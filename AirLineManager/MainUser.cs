@@ -50,6 +50,7 @@ namespace AirLineManager
         }
         private void LoadDataGirdView(User user)
         {
+           
             dgvListLog.DataSource = userLogBus.getLogs(user);
            
         }

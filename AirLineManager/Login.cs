@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AirLineManager.BUS;
+using AirLineManager.Helper;
 namespace AirLineManager
 {
     public partial class frmLogin : Form
@@ -18,6 +19,7 @@ namespace AirLineManager
             
         }
         private UserBUS userBUS = new UserBUS();
+        private Bcrypt bcrypt = new Bcrypt();
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -28,10 +30,12 @@ namespace AirLineManager
             User user = null;
             try
             {
-
-                user = userBUS.getUser(txtUserName.Text, txtPassword.Text);
-                if (user != null)
+                string passs = bcrypt.MD5Hash(txtPassword.Text);
+                
+                user = userBUS.getUser(txtUserName.Text);
+                if (user != null&& user.Password == passs)
                 {
+                    
                     if (user.RoleID == 1)
                     {
                         frmMainAdmin mainAdmin = new frmMainAdmin();
@@ -43,12 +47,19 @@ namespace AirLineManager
                         UserLogBUS userLog = new UserLogBUS();
 
                         this.Hide();
-                        if (userLog.getUserLog(user).ToList()[userLog.getUserLog(user).ToList().Count() - 1].LogOutTime==null)
-                        {
-                           
-                            AswLog aswLog = new AswLog(userLog.getUserLog(user).ToList()[userLog.getUserLog(user).ToList().Count()-1],user);
-                            aswLog.Show();
-                            
+                        if(userLog.getUserLog(user).ToList().Count() > 0){
+                            if (userLog.getUserLog(user).ToList()[userLog.getUserLog(user).ToList().Count() - 1].LogOutTime == null)
+                            {
+
+                                AswLog aswLog = new AswLog(userLog.getUserLog(user).ToList()[userLog.getUserLog(user).ToList().Count() - 1], user);
+                                aswLog.Show();
+
+                            }
+                            else
+                            {
+                                frmMainUser mainUser = new frmMainUser(user);
+                                mainUser.Show();
+                            }
                         }
                         else
                         {
@@ -69,6 +80,7 @@ namespace AirLineManager
             {
                 throw ex;
             }
+            
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

@@ -7,6 +7,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Offices" Relationship="Self.FK_Office_Country" FromRole="Countries" ToRole="Offices" />
+    <NavigationProperty Name="Airports" Relationship="AirLineModel.FK_AirPort_Country" FromRole="Country" ToRole="Airport" />
   </EntityType>
   <EntityType Name="Log">
     <Key>
@@ -110,5 +111,182 @@
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="Aircrafts" EntityType="AirLineModel.Aircraft" />
+    <EntitySet Name="Airports" EntityType="AirLineModel.Airport" />
+    <EntitySet Name="Routes" EntityType="AirLineModel.Route" />
+    <EntitySet Name="Schedules" EntityType="AirLineModel.Schedule" />
+    <AssociationSet Name="FK_Schedule_AirCraft" Association="AirLineModel.FK_Schedule_AirCraft">
+      <End Role="Aircraft" EntitySet="Aircrafts" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AirPort_Country" Association="AirLineModel.FK_AirPort_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Airport" EntitySet="Airports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Routes_Airports2" Association="AirLineModel.FK_Routes_Airports2">
+      <End Role="Airport" EntitySet="Airports" />
+      <End Role="Route" EntitySet="Routes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Routes_Airports3" Association="AirLineModel.FK_Routes_Airports3">
+      <End Role="Airport" EntitySet="Airports" />
+      <End Role="Route" EntitySet="Routes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Routes" Association="AirLineModel.FK_Schedule_Routes">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <EntitySet Name="VD4" EntityType="AirLineModel.VD4" />
+    <EntitySet Name="VD3" EntityType="AirLineModel.VD3" />
   </EntityContainer>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MakeModel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TotalSeats" Type="Int32" Nullable="false" />
+    <Property Name="EconomySeats" Type="Int32" Nullable="false" />
+    <Property Name="BusinessSeats" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Schedules" Relationship="AirLineModel.FK_Schedule_AirCraft" FromRole="Aircraft" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="IATACode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Country" Relationship="AirLineModel.FK_AirPort_Country" FromRole="Airport" ToRole="Country" />
+    <NavigationProperty Name="Routes" Relationship="AirLineModel.FK_Routes_Airports2" FromRole="Airport" ToRole="Route" />
+    <NavigationProperty Name="Routes1" Relationship="AirLineModel.FK_Routes_Airports3" FromRole="Airport" ToRole="Route" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartureAirportID" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalAirportID" Type="Int32" Nullable="false" />
+    <Property Name="Distance" Type="Int32" Nullable="false" />
+    <Property Name="FlightTime" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Airport" Relationship="AirLineModel.FK_Routes_Airports2" FromRole="Route" ToRole="Airport" />
+    <NavigationProperty Name="Airport1" Relationship="AirLineModel.FK_Routes_Airports3" FromRole="Route" ToRole="Airport" />
+    <NavigationProperty Name="Schedules" Relationship="AirLineModel.FK_Schedule_Routes" FromRole="Route" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time" Type="Time" Nullable="false" Precision="5" />
+    <Property Name="AircraftID" Type="Int32" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="EconomyPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+    <Property Name="FlightNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Aircraft" Relationship="AirLineModel.FK_Schedule_AirCraft" FromRole="Schedule" ToRole="Aircraft" />
+    <NavigationProperty Name="Route" Relationship="AirLineModel.FK_Schedule_Routes" FromRole="Schedule" ToRole="Route" />
+  </EntityType>
+  <Association Name="FK_Schedule_AirCraft">
+    <End Type="AirLineModel.Aircraft" Role="Aircraft" Multiplicity="1" />
+    <End Type="AirLineModel.Schedule" Role="Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="AircraftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AirPort_Country">
+    <End Type="AirLineModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="AirLineModel.Airport" Role="Airport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Airport">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Routes_Airports2">
+    <End Type="AirLineModel.Airport" Role="Airport" Multiplicity="1" />
+    <End Type="AirLineModel.Route" Role="Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="DepartureAirportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Routes_Airports3">
+    <End Type="AirLineModel.Airport" Role="Airport" Multiplicity="1" />
+    <End Type="AirLineModel.Route" Role="Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="ArrivalAirportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Routes">
+    <End Type="AirLineModel.Route" Role="Route" Multiplicity="1" />
+    <End Type="AirLineModel.Schedule" Role="Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VD4">
+    <Key>
+      <PropertyRef Name="From" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="EconomyPrice" />
+      <PropertyRef Name="DepartureAirportID" />
+      <PropertyRef Name="ArrivalAirportID" />
+    </Key>
+    <Property Name="From" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="EconomyPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DepartureAirportID" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalAirportID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VD3">
+    <Key>
+      <PropertyRef Name="To" />
+      <PropertyRef Name="AircraftID" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="EconomyPrice" />
+      <PropertyRef Name="DepartureAirportID" />
+      <PropertyRef Name="ArrivalAirportID" />
+      <PropertyRef Name="Confirmed" />
+      <PropertyRef Name="Distance" />
+    </Key>
+    <Property Name="To" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="FlightNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="AircraftID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time" Type="Time" Nullable="false" Precision="5" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="EconomyPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DepartureAirportID" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalAirportID" Type="Int32" Nullable="false" />
+    <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+    <Property Name="Distance" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

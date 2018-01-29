@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AirLineManager.BUS;
+using AirLineManager.Helper;
 namespace AirLineManager
 {
     public partial class frmAdduser : Form
@@ -15,6 +16,7 @@ namespace AirLineManager
         UserBUS userBUS = new UserBUS();
         frmMainAdmin mainAdmin = new frmMainAdmin();
         OfficeBUS officeBUS = new OfficeBUS();
+        Bcrypt bcrypt = new Bcrypt();
         public frmAdduser()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace AirLineManager
                     Email = txtEmail.Text,
                     LastName = txtLastName.Text,
                     FirstName = txtFirstName.Text,
-                    Password = txtPassword.Text,
+                    Password = bcrypt.MD5Hash(txtPassword.Text),
                     Birthdate = dtpBirthDate.Value,
                     RoleID = 2,
                     Active = true,

@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aircraft.cs">
+      <DependentUpon>AirLineModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AirLineModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,13 +72,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AirLineModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Airport.cs">
+      <DependentUpon>AirLineModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AswLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AswLog.Designer.cs">
       <DependentUpon>AswLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\AircraftBUS.cs" />
+    <Compile Include="BUS\AirportBUS.cs" />
     <Compile Include="BUS\OfficeBUS.cs" />
+    <Compile Include="BUS\RouterBUS.cs" />
+    <Compile Include="BUS\ScheduleBUS.cs" />
     <Compile Include="BUS\UserBUS.cs" />
     <Compile Include="BUS\UserLogBUS.cs" />
     <Compile Include="Country.cs">
@@ -92,6 +102,12 @@
     </Compile>
     <Compile Include="frmChangeRole.Designer.cs">
       <DependentUpon>frmChangeRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaganerFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaganerFlight.Designer.cs">
+      <DependentUpon>frmMaganerFlight.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\Bcrypt.cs" />
     <Compile Include="Login.cs">
@@ -123,7 +139,25 @@
     <Compile Include="Role.cs">
       <DependentUpon>AirLineModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Route.cs">
+      <DependentUpon>AirLineModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>AirLineModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleEdit.Designer.cs">
+      <DependentUpon>ScheduleEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>AirLineModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VD3.cs">
+      <DependentUpon>AirLineModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VD4.cs">
       <DependentUpon>AirLineModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AswLog.resx">
@@ -134,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmChangeRole.resx">
       <DependentUpon>frmChangeRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaganerFlight.resx">
+      <DependentUpon>frmMaganerFlight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -153,6 +190,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ScheduleEdit.resx">
+      <DependentUpon>ScheduleEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="AirLineModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirLineModel.Designer.cs</LastGenOutput>
