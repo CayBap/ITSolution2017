@@ -13,5 +13,10 @@ namespace AirLineManager.BUS
         {
             return context.Routes.ToList();
         }
+        public int getRouterID(int idTo,int idFrom)
+        {
+            Route router = context.Routes.Where(rout => rout.ArrivalAirportID == idTo && rout.DepartureAirportID == idFrom).FirstOrDefault();
+            return router.ID;
+        }
     }
 }

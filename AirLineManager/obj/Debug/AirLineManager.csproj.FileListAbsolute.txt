@@ -38,3 +38,5 @@ D:\ITSolution\ITSolution2017\AirLineManager\obj\Debug\AirLineManager.pdb
 D:\ITSolution\ITSolution2017\AirLineManager\obj\Debug\AirLineManager.frmMaganerFlight.resources
 D:\ITSolution\ITSolution2017\AirLineManager\obj\Debug\AirLineManager.csprojResolveAssemblyReference.cache
 D:\ITSolution\ITSolution2017\AirLineManager\obj\Debug\AirLineManager.ScheduleEdit.resources
+D:\ITSolution\ITSolution2017\AirLineManager\obj\Debug\AirLineManager.csproj.ResolveComReference.cache
+D:\ITSolution\ITSolution2017\AirLineManager\obj\Debug\AirLineManager.frmScheduleChange.resources

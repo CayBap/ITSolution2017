@@ -13,5 +13,10 @@ namespace AirLineManager.BUS
         {
             return context.Airports.ToList();
         }
+        public int getID(string IATACode)
+        {
+            Airport airport = context.Airports.Where(air => air.IATACode == IATACode).FirstOrDefault();
+            return airport.ID;
+        }
     }
 }

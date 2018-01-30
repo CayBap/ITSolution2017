@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AirLineManager.BUS;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace AirLineManager
 {
@@ -154,9 +156,18 @@ namespace AirLineManager
         {
             int index = dgvMaganerFlight.SelectedRows[0].Index;
             ScheduleEdit scheduleEdit = new ScheduleEdit(Convert.ToInt32(dgvMaganerFlight.Rows[index].Cells[9].Value), dgvMaganerFlight.Rows[index].Cells[2].Value.ToString(), dgvMaganerFlight.Rows[index].Cells[3].Value.ToString(), Convert.ToInt32(dgvMaganerFlight.Rows[index].Cells[5].Value));
-            scheduleEdit.Show();
-            
+            scheduleEdit.ShowDialog(this);
+            dgvMaganerFlight.Rows.Clear();
+            this.setDataGirdView();
 
+        }
+
+        private void btnImportChange_Click(object sender, EventArgs e)
+        {
+            frmScheduleChange scheduleChange = new frmScheduleChange();
+            scheduleChange.ShowDialog(this);
+            dgvMaganerFlight.Rows.Clear();
+            setDataGirdView();
         }
     }
 }

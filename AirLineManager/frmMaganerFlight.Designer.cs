@@ -29,22 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbxFrom = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbxTo = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpOUtBound = new System.Windows.Forms.DateTimePicker();
-            this.txtFlightNumber = new System.Windows.Forms.TextBox();
-            this.btnApply = new System.Windows.Forms.Button();
-            this.dgvMaganerFlight = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCancelFlight = new System.Windows.Forms.Button();
-            this.btnEditFlight = new System.Windows.Forms.Button();
-            this.btnImportChange = new System.Windows.Forms.Button();
             this.cbbSortBy = new System.Windows.Forms.ComboBox();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.txtFlightNumber = new System.Windows.Forms.TextBox();
+            this.dtpOUtBound = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbxTo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbxFrom = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvMaganerFlight = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +51,10 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImportChange = new System.Windows.Forms.Button();
+            this.btnEditFlight = new System.Windows.Forms.Button();
+            this.btnCancelFlight = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaganerFlight)).BeginInit();
             this.panel1.SuspendLayout();
@@ -80,80 +80,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter By";
             // 
-            // label1
+            // cbbSortBy
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "From";
-            // 
-            // cbxFrom
-            // 
-            this.cbxFrom.FormattingEnabled = true;
-            this.cbxFrom.Location = new System.Drawing.Point(132, 34);
-            this.cbxFrom.Name = "cbxFrom";
-            this.cbxFrom.Size = new System.Drawing.Size(179, 24);
-            this.cbxFrom.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Out bound";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(361, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "To";
-            // 
-            // cbxTo
-            // 
-            this.cbxTo.FormattingEnabled = true;
-            this.cbxTo.Location = new System.Drawing.Point(417, 34);
-            this.cbxTo.Name = "cbxTo";
-            this.cbxTo.Size = new System.Drawing.Size(186, 24);
-            this.cbxTo.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(333, 75);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Flight Number";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(633, 37);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Sort By";
-            // 
-            // dtpOUtBound
-            // 
-            this.dtpOUtBound.Location = new System.Drawing.Point(133, 73);
-            this.dtpOUtBound.Name = "dtpOUtBound";
-            this.dtpOUtBound.Size = new System.Drawing.Size(178, 23);
-            this.dtpOUtBound.TabIndex = 2;
-            // 
-            // txtFlightNumber
-            // 
-            this.txtFlightNumber.Location = new System.Drawing.Point(458, 75);
-            this.txtFlightNumber.Name = "txtFlightNumber";
-            this.txtFlightNumber.Size = new System.Drawing.Size(145, 23);
-            this.txtFlightNumber.TabIndex = 3;
+            this.cbbSortBy.FormattingEnabled = true;
+            this.cbbSortBy.Location = new System.Drawing.Point(706, 31);
+            this.cbbSortBy.Name = "cbbSortBy";
+            this.cbbSortBy.Size = new System.Drawing.Size(170, 24);
+            this.cbbSortBy.TabIndex = 5;
+            this.cbbSortBy.SelectedIndexChanged += new System.EventHandler(this.cbbSortBy_SelectedIndexChanged);
             // 
             // btnApply
             // 
@@ -164,6 +98,81 @@
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
+            // txtFlightNumber
+            // 
+            this.txtFlightNumber.Location = new System.Drawing.Point(458, 75);
+            this.txtFlightNumber.Name = "txtFlightNumber";
+            this.txtFlightNumber.Size = new System.Drawing.Size(145, 23);
+            this.txtFlightNumber.TabIndex = 3;
+            // 
+            // dtpOUtBound
+            // 
+            this.dtpOUtBound.Location = new System.Drawing.Point(133, 73);
+            this.dtpOUtBound.Name = "dtpOUtBound";
+            this.dtpOUtBound.Size = new System.Drawing.Size(178, 23);
+            this.dtpOUtBound.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(333, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Flight Number";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(41, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Out bound";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(633, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Sort By";
+            // 
+            // cbxTo
+            // 
+            this.cbxTo.FormattingEnabled = true;
+            this.cbxTo.Location = new System.Drawing.Point(417, 34);
+            this.cbxTo.Name = "cbxTo";
+            this.cbxTo.Size = new System.Drawing.Size(186, 24);
+            this.cbxTo.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(361, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "To";
+            // 
+            // cbxFrom
+            // 
+            this.cbxFrom.FormattingEnabled = true;
+            this.cbxFrom.Location = new System.Drawing.Point(132, 34);
+            this.cbxFrom.Name = "cbxFrom";
+            this.cbxFrom.Size = new System.Drawing.Size(179, 24);
+            this.cbxFrom.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "From";
             // 
             // dgvMaganerFlight
             // 
@@ -185,55 +194,6 @@
             this.dgvMaganerFlight.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMaganerFlight.Size = new System.Drawing.Size(916, 316);
             this.dgvMaganerFlight.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnImportChange);
-            this.panel1.Controls.Add(this.btnEditFlight);
-            this.panel1.Controls.Add(this.btnCancelFlight);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 462);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(941, 62);
-            this.panel1.TabIndex = 2;
-            // 
-            // btnCancelFlight
-            // 
-            this.btnCancelFlight.Location = new System.Drawing.Point(41, 15);
-            this.btnCancelFlight.Name = "btnCancelFlight";
-            this.btnCancelFlight.Size = new System.Drawing.Size(146, 35);
-            this.btnCancelFlight.TabIndex = 0;
-            this.btnCancelFlight.Text = "Cancel Flight";
-            this.btnCancelFlight.UseVisualStyleBackColor = true;
-            this.btnCancelFlight.Click += new System.EventHandler(this.btnCancelFlight_Click);
-            // 
-            // btnEditFlight
-            // 
-            this.btnEditFlight.Location = new System.Drawing.Point(409, 15);
-            this.btnEditFlight.Name = "btnEditFlight";
-            this.btnEditFlight.Size = new System.Drawing.Size(102, 35);
-            this.btnEditFlight.TabIndex = 0;
-            this.btnEditFlight.Text = "Edit Flight";
-            this.btnEditFlight.UseVisualStyleBackColor = true;
-            this.btnEditFlight.Click += new System.EventHandler(this.btnEditFlight_Click);
-            // 
-            // btnImportChange
-            // 
-            this.btnImportChange.Location = new System.Drawing.Point(760, 15);
-            this.btnImportChange.Name = "btnImportChange";
-            this.btnImportChange.Size = new System.Drawing.Size(156, 35);
-            this.btnImportChange.TabIndex = 0;
-            this.btnImportChange.Text = "Import Change";
-            this.btnImportChange.UseVisualStyleBackColor = true;
-            // 
-            // cbbSortBy
-            // 
-            this.cbbSortBy.FormattingEnabled = true;
-            this.cbbSortBy.Location = new System.Drawing.Point(706, 31);
-            this.cbbSortBy.Name = "cbbSortBy";
-            this.cbbSortBy.Size = new System.Drawing.Size(170, 24);
-            this.cbbSortBy.TabIndex = 5;
-            this.cbbSortBy.SelectedIndexChanged += new System.EventHandler(this.cbbSortBy_SelectedIndexChanged);
             // 
             // Column1
             // 
@@ -285,6 +245,47 @@
             this.Column10.HeaderText = "ID";
             this.Column10.Name = "Column10";
             this.Column10.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnImportChange);
+            this.panel1.Controls.Add(this.btnEditFlight);
+            this.panel1.Controls.Add(this.btnCancelFlight);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 462);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(941, 62);
+            this.panel1.TabIndex = 2;
+            // 
+            // btnImportChange
+            // 
+            this.btnImportChange.Location = new System.Drawing.Point(760, 15);
+            this.btnImportChange.Name = "btnImportChange";
+            this.btnImportChange.Size = new System.Drawing.Size(156, 35);
+            this.btnImportChange.TabIndex = 0;
+            this.btnImportChange.Text = "Import Change";
+            this.btnImportChange.UseVisualStyleBackColor = true;
+            this.btnImportChange.Click += new System.EventHandler(this.btnImportChange_Click);
+            // 
+            // btnEditFlight
+            // 
+            this.btnEditFlight.Location = new System.Drawing.Point(409, 15);
+            this.btnEditFlight.Name = "btnEditFlight";
+            this.btnEditFlight.Size = new System.Drawing.Size(102, 35);
+            this.btnEditFlight.TabIndex = 0;
+            this.btnEditFlight.Text = "Edit Flight";
+            this.btnEditFlight.UseVisualStyleBackColor = true;
+            this.btnEditFlight.Click += new System.EventHandler(this.btnEditFlight_Click);
+            // 
+            // btnCancelFlight
+            // 
+            this.btnCancelFlight.Location = new System.Drawing.Point(41, 15);
+            this.btnCancelFlight.Name = "btnCancelFlight";
+            this.btnCancelFlight.Size = new System.Drawing.Size(146, 35);
+            this.btnCancelFlight.TabIndex = 0;
+            this.btnCancelFlight.Text = "Cancel Flight";
+            this.btnCancelFlight.UseVisualStyleBackColor = true;
+            this.btnCancelFlight.Click += new System.EventHandler(this.btnCancelFlight_Click);
             // 
             // frmMaganerFlight
             // 

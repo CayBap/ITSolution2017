@@ -59,12 +59,12 @@ namespace AirLineManager
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Schedule sche = scheduleBUS.getSchedule(idSche);
-           
-
-
+            sche.Time = TimeSpan.Parse(txtTime.Text.ToString());
             sche.Date = dtpDate.Value;
-            
-
+            sche.EconomyPrice = decimal.Parse(txtPrice.Text.ToString());
+            scheduleBUS.updateSchedule(sche);
+            this.Close();
         }
+       
     }
 }
